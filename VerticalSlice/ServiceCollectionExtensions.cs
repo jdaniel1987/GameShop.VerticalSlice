@@ -1,5 +1,7 @@
 ﻿using Carter;
+using VerticalSlice.Features.Games.Commands;
 using VerticalSlice.Features.Games.Queries;
+using VerticalSlice.Features.GamesConsoles.Commands;
 using VerticalSlice.Features.GamesConsoles.Queries;
 
 namespace VerticalSlice.API;
@@ -15,5 +17,7 @@ public static class ServiceCollectionExtensions
 
         services.AddGamesConsolesQueries();
         services.AddGamesQueries();
+        services.AddGamesCommands();
+        services.AddGamesConsolesCommands();
     }
 }

@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\VarticalSlice.Features.GamesConsoles.Commands\VarticalSlice.Features.GamesConsoles.Commands.csproj" />
+    <ProjectReference Include="..\VerticalSlice.Features.Games.Commands\VerticalSlice.Features.Games.Commands.csproj" />
     <ProjectReference Include="..\VerticalSlice.Features.Games.Queries\VerticalSlice.Features.Games.Queries.csproj" />
     <ProjectReference Include="..\VerticalSlice.Features.GamesConsoles.Queries\VerticalSlice.Features.GamesConsoles.Queries.csproj" />
   </ItemGroup>

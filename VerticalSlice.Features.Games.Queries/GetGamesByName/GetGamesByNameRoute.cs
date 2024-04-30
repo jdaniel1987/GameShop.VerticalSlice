@@ -1,6 +1,7 @@
 ﻿using Carter;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace VerticalSlice.Features.GamesConsoles.Queries.GetGamesByName;
@@ -13,6 +14,7 @@ public class GetGamesByNameConsolesRoute : ICarterModule
         {
             return mediator.Send(new GetGamesByNameQuery(GameName));
         })
-        .WithName(nameof(GetGamesByNameConsolesRoute));
+        .WithName(nameof(GetGamesByNameConsolesRoute))
+        .WithTags("Games");
     }
 }
