@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 
-namespace VerticalSlice.Features.GamesConsoles.DeleteGamesConsole;
+namespace VerticalSlice.Features.GamesConsoles.Commands.DeleteGamesConsole;
 
 public class DeleteGamesConsoleHandler : IRequestHandler<DeleteGamesConsoleCommand, IResult>
 {

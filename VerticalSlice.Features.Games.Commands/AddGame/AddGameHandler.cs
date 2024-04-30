@@ -1,4 +1,6 @@
-﻿using Dapper;
+﻿using Carter.ModelBinding;
+using Dapper;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
@@ -10,15 +12,24 @@ public class AddGameHandler : IRequestHandler<AddGameCommand, IResult>
 {
     private static string _connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VerticalSliceExample;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
     private readonly IPublisher _mediatorPublisher;
+    private readonly IValidator<AddGameCommand> _validator;
 
     public AddGameHandler(
-        IPublisher publisher)
+        IPublisher publisher,
+        IValidator<AddGameCommand> validator)
     {
         _mediatorPublisher = publisher;
+        _validator = validator;
     }
 
     public async Task<IResult> Handle(AddGameCommand request, CancellationToken cancellationToken)
     {
+        var validationResult = _validator.Validate(request);
+        if (!validationResult.IsValid)
+        {
+            return Results.ValidationProblem(validationResult.GetValidationProblems());
+        }
+
         var createdId = await AddGameToDB(request);
         await NotifyGameCreation(request);
 

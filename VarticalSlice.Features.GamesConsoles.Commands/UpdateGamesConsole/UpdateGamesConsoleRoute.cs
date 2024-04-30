@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 
-namespace VerticalSlice.Features.GamesConsoles.UpdateGamesConsole;
+namespace VerticalSlice.Features.GamesConsoles.Commands.UpdateGamesConsole;
 
 public class UpdateGamesConsoleRoute : ICarterModule
 {

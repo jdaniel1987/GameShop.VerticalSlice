@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace VerticalSlice.Features.GamesConsoles.Queries;
