@@ -1,14 +1,20 @@
 ﻿using Dapper;
 using MediatR;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Immutable;
 
 namespace VerticalSlice.Application.Features.Queries.GetAllGamesConsoles;
 
 public class GetAllGamesConsolesHandler : IRequestHandler<GetAllGamesConsolesQuery, GetAllGamesConsolesResponse>
 {
-    private static string _connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VerticalSliceExample;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
-    
+    private readonly IConfiguration _configuration;
+
+    public GetAllGamesConsolesHandler(IConfiguration configuration)
+    {
+        _configuration = configuration;
+    }
+
     public async Task<GetAllGamesConsolesResponse> Handle(GetAllGamesConsolesQuery request, CancellationToken cancellationToken)
     {
         string sql = @"SELECT [Id]
@@ -16,7 +22,7 @@ public class GetAllGamesConsolesHandler : IRequestHandler<GetAllGamesConsolesQue
                               ,[Manufacturer]
                               ,[Price]
                          FROM [dbo].[GamesConsoles]";
-        using var db = new SqlConnection(_connectionString);
+        using var db = new SqlConnection(_configuration.GetConnectionString("ReadDB"));
         var gamesConsoles = await db.QueryAsync<GetAllGamesConsolesResponseItem>(sql);
 
         return new GetAllGamesConsolesResponse(gamesConsoles.ToImmutableArray());

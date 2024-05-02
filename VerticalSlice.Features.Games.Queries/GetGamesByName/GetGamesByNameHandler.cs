@@ -1,14 +1,19 @@
 ﻿using Dapper;
 using MediatR;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Immutable;
 
 namespace VerticalSlice.Features.GamesConsoles.Queries.GetGamesByName;
 
 public class GetGamesByNameHandler : IRequestHandler<GetGamesByNameQuery, GetGamesByNameResponse>
 {
-    private static string _connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VerticalSliceExample;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+    private readonly IConfiguration _configuration;
 
+    public GetGamesByNameHandler(IConfiguration configuration)
+    {
+        _configuration = configuration;
+    }
     public async Task<GetGamesByNameResponse> Handle(GetGamesByNameQuery request, CancellationToken cancellationToken)
     {
         string sql = @"SELECT g.[Id]
@@ -20,7 +25,7 @@ public class GetGamesByNameHandler : IRequestHandler<GetGamesByNameQuery, GetGam
                          FROM [dbo].[Games] g
                          JOIN [dbo].[GamesConsoles] c on g.[GamesConsoleId] = c.[Id]
                         WHERE g.[Name] LIKE @gameName";
-        using var db = new SqlConnection(_connectionString);
+        using var db = new SqlConnection(_configuration.GetConnectionString("ReadDB"));
         var games = await db.QueryAsync<GetGamesByNameResponseItem>(
             sql, 
             new { gameName = $"%{request.GameName}%" });

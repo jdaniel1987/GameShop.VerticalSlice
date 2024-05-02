@@ -4,20 +4,23 @@ using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using VerticalSlice.Features.Games.Commands.AddGame.Notification;
 
 namespace VerticalSlice.Features.Games.Commands.AddGame;
 
 public class AddGameHandler : IRequestHandler<AddGameCommand, IResult>
 {
-    private static string _connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VerticalSliceExample;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+    private readonly IConfiguration _configuration;
     private readonly IPublisher _mediatorPublisher;
     private readonly IValidator<AddGameCommand> _validator;
 
     public AddGameHandler(
+        IConfiguration configuration,
         IPublisher publisher,
         IValidator<AddGameCommand> validator)
     {
+        _configuration = configuration;
         _mediatorPublisher = publisher;
         _validator = validator;
     }
@@ -48,7 +51,7 @@ public class AddGameHandler : IRequestHandler<AddGameCommand, IResult>
                          OUTPUT INSERTED.Id
                          VALUES (@name, @publisher, @price, @gamesConsoleId);";
 
-        var db = new SqlConnection(_connectionString);
+        var db = new SqlConnection(_configuration.GetConnectionString("WriteDB"));
         return await db.QuerySingleAsync<int>(
             sql, 
             new
