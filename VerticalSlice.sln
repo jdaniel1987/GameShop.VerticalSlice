@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VerticalSlice.Features.Game
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VarticalSlice.Features.GamesConsoles.Commands", "VarticalSlice.Features.GamesConsoles.Commands\VarticalSlice.Features.GamesConsoles.Commands.csproj", "{98F14DC5-2652-4803-90A9-E83BBF240E2A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VerticalSlice.API", "VerticalSlice.API\VerticalSlice.API.csproj", "{4E98C0F9-0AF1-452D-98C1-6D8165B59620}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VerticalSlice.Queries.API", "VerticalSlice.API\VerticalSlice.Queries.API.csproj", "{4E98C0F9-0AF1-452D-98C1-6D8165B59620}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerticalSlice.Commands.API", "VerticalSlice.Commands.API\VerticalSlice.Commands.API.csproj", "{67550372-ABFB-4823-9521-4860C1B22EB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{4E98C0F9-0AF1-452D-98C1-6D8165B59620}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E98C0F9-0AF1-452D-98C1-6D8165B59620}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E98C0F9-0AF1-452D-98C1-6D8165B59620}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67550372-ABFB-4823-9521-4860C1B22EB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67550372-ABFB-4823-9521-4860C1B22EB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67550372-ABFB-4823-9521-4860C1B22EB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67550372-ABFB-4823-9521-4860C1B22EB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,7 @@ using System.Reflection;
 using VerticalSlice.Features.Games.Commands.AddGame;
 using VerticalSlice.Features.Games.Commands.UpdateGame;
 
-namespace VerticalSlice.Features.Games.Queries;
+namespace VerticalSlice.Features.Games.Commands;
 
 public static class ServiceCollectionExtensions
 {

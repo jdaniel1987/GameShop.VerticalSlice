@@ -7,17 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Carter" Version="8.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4" />
+    <PackageReference Include="Carter" Version="8.2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.7" />
     <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="171.30.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\VarticalSlice.Features.GamesConsoles.Commands\VarticalSlice.Features.GamesConsoles.Commands.csproj" />
     <ProjectReference Include="..\VerticalSlice.Features.Games.Commands\VerticalSlice.Features.Games.Commands.csproj" />
-    <ProjectReference Include="..\VerticalSlice.Features.Games.Queries\VerticalSlice.Features.Games.Queries.csproj" />
-    <ProjectReference Include="..\VerticalSlice.Features.GamesConsoles.Queries\VerticalSlice.Features.GamesConsoles.Queries.csproj" />
   </ItemGroup>
 
 </Project>

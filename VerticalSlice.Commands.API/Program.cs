@@ -1,7 +1,6 @@
 using Carter;
-using VerticalSlice.Queries.API.DatabaseSeed;
 
-namespace VerticalSlice.Queries.API;
+namespace VerticalSlice.Commands.API;
 
 public class Program
 {
@@ -29,7 +28,6 @@ public class Program
 
         //------------------------------------------------------
         app.MapCarter(); // Carter will take care of mapping all API routes that are specified in Services
-        DatabaseCreation.CreateDatabase(builder.Configuration);
         //------------------------------------------------------
 
         app.Run();

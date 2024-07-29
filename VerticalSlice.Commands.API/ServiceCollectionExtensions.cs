@@ -1,8 +1,8 @@
 ﻿using Carter;
 using VerticalSlice.Features.Games.Commands;
-using VerticalSlice.Features.GamesConsoles.Queries;
+using VerticalSlice.Features.GamesConsoles.Commands;
 
-namespace VerticalSlice.Queries.API;
+namespace VerticalSlice.Commands.API;
 
 public static class ServiceCollectionExtensions
 {
@@ -13,7 +13,7 @@ public static class ServiceCollectionExtensions
         services.AddSwaggerGen();
         services.AddCarter();
 
-        services.AddGamesConsolesQueries();
-        services.AddGamesQueries();
+        services.AddGamesConsolesCommands();
+        services.AddGamesCommands();
     }
 }

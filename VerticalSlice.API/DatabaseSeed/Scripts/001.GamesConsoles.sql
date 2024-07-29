@@ -6,3 +6,10 @@
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
+INSERT INTO [dbo].[GamesConsoles] ([Name], [Manufacturer], [Price])
+VALUES
+('PlayStation 5', 'Sony', 499.99),
+('Xbox Series X', 'Microsoft', 599.99),
+('Nintendo Switch', 'Nintendo', 299.99),
+('PlayStation 4', 'Sony', 149.99),
+('Xbox One', 'Microsoft', 199.99);

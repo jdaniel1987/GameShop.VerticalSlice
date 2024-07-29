@@ -2,7 +2,7 @@
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 
-namespace VerticalSlice.API.DatabaseSeed;
+namespace VerticalSlice.Queries.API.DatabaseSeed;
 
 public static class DatabaseCreation
 {
@@ -27,7 +27,7 @@ public static class DatabaseCreation
         foreach (var scriptFile in Directory.GetFiles(scriptsDir, "*.sql", SearchOption.AllDirectories))
         {
             var script = File.ReadAllText(scriptFile);
-            using SqlConnection connection = new SqlConnection(connectionString);
+            using var connection = new SqlConnection(connectionString);
             connection.Open();
             var command = new SqlCommand(script, connection);
             command.ExecuteNonQuery();
