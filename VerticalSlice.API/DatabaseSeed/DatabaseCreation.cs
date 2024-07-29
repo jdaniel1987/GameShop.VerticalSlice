@@ -29,7 +29,7 @@ public static class DatabaseCreation
             var script = File.ReadAllText(scriptFile);
             using SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
-            SqlCommand command = new SqlCommand(script, connection);
+            var command = new SqlCommand(script, connection);
             command.ExecuteNonQuery();
         }
     }

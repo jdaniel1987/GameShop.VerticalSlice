@@ -9,21 +9,14 @@ using VerticalSlice.Features.Games.Commands.AddGame.Notification;
 
 namespace VerticalSlice.Features.Games.Commands.AddGame;
 
-public class AddGameHandler : IRequestHandler<AddGameCommand, IResult>
+public class AddGameHandler(
+    IConfiguration configuration,
+    IPublisher publisher,
+    IValidator<AddGameCommand> validator) : IRequestHandler<AddGameCommand, IResult>
 {
-    private readonly IConfiguration _configuration;
-    private readonly IPublisher _mediatorPublisher;
-    private readonly IValidator<AddGameCommand> _validator;
-
-    public AddGameHandler(
-        IConfiguration configuration,
-        IPublisher publisher,
-        IValidator<AddGameCommand> validator)
-    {
-        _configuration = configuration;
-        _mediatorPublisher = publisher;
-        _validator = validator;
-    }
+    private readonly IConfiguration _configuration = configuration;
+    private readonly IPublisher _mediatorPublisher = publisher;
+    private readonly IValidator<AddGameCommand> _validator = validator;
 
     public async Task<IResult> Handle(AddGameCommand request, CancellationToken cancellationToken)
     {

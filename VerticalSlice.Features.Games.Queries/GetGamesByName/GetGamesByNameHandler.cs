@@ -6,14 +6,10 @@ using System.Collections.Immutable;
 
 namespace VerticalSlice.Features.GamesConsoles.Queries.GetGamesByName;
 
-public class GetGamesByNameHandler : IRequestHandler<GetGamesByNameQuery, GetGamesByNameResponse>
+public class GetGamesByNameHandler(IConfiguration configuration) : IRequestHandler<GetGamesByNameQuery, GetGamesByNameResponse>
 {
-    private readonly IConfiguration _configuration;
+    private readonly IConfiguration _configuration = configuration;
 
-    public GetGamesByNameHandler(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
     public async Task<GetGamesByNameResponse> Handle(GetGamesByNameQuery request, CancellationToken cancellationToken)
     {
         string sql = @"SELECT g.[Id]

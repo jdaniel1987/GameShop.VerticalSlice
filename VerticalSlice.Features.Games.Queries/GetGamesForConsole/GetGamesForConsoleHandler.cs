@@ -6,14 +6,9 @@ using System.Collections.Immutable;
 
 namespace VerticalSlice.Features.GamesConsoles.Queries.GetGamesForConsole;
 
-public class GetGamesForConsoleHandler : IRequestHandler<GetGamesForConsoleQuery, GetGamesForConsoleResponse>
+public class GetGamesForConsoleHandler(IConfiguration configuration) : IRequestHandler<GetGamesForConsoleQuery, GetGamesForConsoleResponse>
 {
-    private readonly IConfiguration _configuration;
-
-    public GetGamesForConsoleHandler(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
+    private readonly IConfiguration _configuration = configuration;
 
     public async Task<GetGamesForConsoleResponse> Handle(GetGamesForConsoleQuery request, CancellationToken cancellationToken)
     {

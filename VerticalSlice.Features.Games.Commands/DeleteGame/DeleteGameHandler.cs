@@ -6,14 +6,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace VerticalSlice.Features.Games.Commands.DeleteGame;
 
-public class DeleteGameHandler : IRequestHandler<DeleteGameCommand, IResult>
+public class DeleteGameHandler(IConfiguration configuration) : IRequestHandler<DeleteGameCommand, IResult>
 {
-    private readonly IConfiguration _configuration;
-
-    public DeleteGameHandler(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
+    private readonly IConfiguration _configuration = configuration;
 
     public async Task<IResult> Handle(DeleteGameCommand request, CancellationToken cancellationToken)
     {

@@ -8,18 +8,12 @@ using Microsoft.Extensions.Configuration;
 
 namespace VerticalSlice.Features.Games.Commands.UpdateGame;
 
-public class UpdateGameHandler : IRequestHandler<UpdateGameCommand, IResult>
+public class UpdateGameHandler(
+    IConfiguration configuration,
+    IValidator<UpdateGameCommand> validator) : IRequestHandler<UpdateGameCommand, IResult>
 {
-    private readonly IConfiguration _configuration;
-    private readonly IValidator<UpdateGameCommand> _validator;
-
-    public UpdateGameHandler(
-        IConfiguration configuration,
-        IValidator<UpdateGameCommand> validator)
-    {
-        _configuration = configuration;
-        _validator = validator;
-    }
+    private readonly IConfiguration _configuration = configuration;
+    private readonly IValidator<UpdateGameCommand> _validator = validator;
 
     public async Task<IResult> Handle(UpdateGameCommand request, CancellationToken cancellationToken)
     {

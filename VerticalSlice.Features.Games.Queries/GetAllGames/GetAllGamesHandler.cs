@@ -6,15 +6,10 @@ using System.Collections.Immutable;
 
 namespace VerticalSlice.Features.Games.Queries.GetAllGames;
 
-public class GetAllGamesHandler : IRequestHandler<GetAllGamesQuery, GetAllGamesResponse>
+public class GetAllGamesHandler(IConfiguration configuration) : IRequestHandler<GetAllGamesQuery, GetAllGamesResponse>
 {
 
-    private readonly IConfiguration _configuration;
-
-    public GetAllGamesHandler(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
+    private readonly IConfiguration _configuration = configuration;
 
     public async Task<GetAllGamesResponse> Handle(GetAllGamesQuery request, CancellationToken cancellationToken)
     {

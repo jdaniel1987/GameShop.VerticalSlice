@@ -8,18 +8,12 @@ using Microsoft.Extensions.Configuration;
 
 namespace VerticalSlice.Features.GamesConsoles.Commands.AddGamesConsole;
 
-public class AddGamesConsoleHandler : IRequestHandler<AddGamesConsoleCommand, IResult>
+public class AddGamesConsoleHandler(
+    IConfiguration configuration,
+    IValidator<AddGamesConsoleCommand> validator) : IRequestHandler<AddGamesConsoleCommand, IResult>
 {
-    private readonly IConfiguration _configuration;
-    private readonly IValidator<AddGamesConsoleCommand> _validator;
-
-    public AddGamesConsoleHandler(
-        IConfiguration configuration,
-        IValidator<AddGamesConsoleCommand> validator)
-    {
-        _configuration = configuration;
-        _validator = validator;
-    }
+    private readonly IConfiguration _configuration = configuration;
+    private readonly IValidator<AddGamesConsoleCommand> _validator = validator;
 
     public async Task<IResult> Handle(AddGamesConsoleCommand request, CancellationToken cancellationToken)
     {
